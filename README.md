@@ -60,8 +60,6 @@ npm install
     }
 ```
 
-**_NOTE:_** : You can login only if the user status is approved.
-
 #### Signin User
 
 ```http
