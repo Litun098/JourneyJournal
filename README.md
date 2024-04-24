@@ -66,10 +66,10 @@ npm install
     POST localhost:4000/api/login
 ```
 
-| body       | Type     | Description                 |
-| :--------- | :------- | :-------------------------- |
-| `userId`   | `string` | **Required**. email         |
-| `password` | `string` | **Required**. password      |
+| body       | Type     | Description            |
+| :--------- | :------- | :--------------------- |
+| `email`    | `string` | **Required**. email    |
+| `password` | `string` | **Required**. password |
 
 #### Example
 
@@ -95,117 +95,224 @@ npm install
     }
 }
 ```
+
 #### Logout
 
 ```http
      localhost:4000/api/logout
 ```
 
-#### Get all users
-
-**_NOTE:_** user should be ADMIN.
+#### Get all blogs
 
 ```http
-    POST localhost:3000/crm/api/users
+    GET localhost:4000/api/post
 ```
-
-| header           | Type     | Description         |
-| :--------------- | :------- | :------------------ |
-| `x-access-token` | `string` | **Required**. token |
 
 #### Output
 
 ```
     [
-        {
-            "name": "Litun",
-            "userId": "admin",
-            "email": "nayaklitun9@gmail.com",
-            "userTypes": "ENGINEER",
-            "userStatus": "APPROVED"
-        },
-        {
-            "name": "Litun Nayak",
-            "userId": "litun123",
-            "email": "litunnayak09@gmail.com",
-            "userTypes": "ADMIN",
-            "userStatus": "APPROVED"
-        },
-        {
-            "name": "Litun Nayak",
-            "userId": "litun1231",
-            "email": "litunnayak9@gmail.com",
-            "userTypes": "CUSTOMER",
-            "userStatus": "APPROVED"
-        }
-    ]
+    {
+        "id": "66260080fdb7f14fc379856f",
+        "slug": "test-slug",
+        "title": "Computers Avon RAM",
+        "body": "Vel accusamus quaerat voluptatem vero. Ut et quia alias qui ut accusantium tempore consequuntur rerum. Eos quis sequi tenetur nulla ut soluta.",
+        "createdAt": "2024-04-22T06:15:27.463Z",
+        "authorId": "6625ffcd9225337d86663e71"
+    },
+    {
+        "id": "662600cffdb7f14fc3798570",
+        "slug": "test-slug",
+        "title": "asymmetric exuding Organic",
+        "body": "Eligendi sequi qui velit quibusdam non tenetur molestiae beatae. Labore sed fugiat recusandae sed qui dolore consequatur beatae in. Qui quaerat esse eligendi aut. Ea aut labore voluptas aliquam dolor at quis recusandae quam. Dolorem et quidem ratione tempore non consequatur tenetur voluptas.",
+        "createdAt": "2024-04-22T06:16:47.563Z",
+        "authorId": "6625ffcd9225337d86663e71"
+    },
+    {
+        "id": "662603f60228b7b8a460ca4a",
+        "slug": "test-slug",
+        "title": "enterprise Handmade Street",
+        "body": "Porro totam nihil fugiat. Aut nemo dolore. Natus ut eius quibusdam quo velit commodi cum debitis non.",
+        "createdAt": "2024-04-22T06:30:14.603Z",
+        "authorId": "6625ffcd9225337d86663e71"
+    },
+    {
+        "id": "6628c0fd267cefb4e869e085",
+        "slug": "test-slug",
+        "title": "Market optimize Auto Steel",
+        "body": "Aliquam ipsa et rerum velit quas nam quae accusamus sint. Est et aut in tenetur provident aut fugit. Saepe animi animi.",
+        "createdAt": "2024-04-24T08:21:17.560Z",
+        "authorId": "6628ba809c19ffcd41ef477e"
+    }
+]
 ```
 
-#### Get user by userId
+#### Get Posts by author Id
 
-**_NOTE:_** user should be ADMIN.
 
 ```http
-    POST localhost:3000/crm/api/users/:userId
+    GET localhost:4000/api/post/author/:id
 ```
 
-| header           | Type     | Description         |
-| :--------------- | :------- | :------------------ |
-| `x-access-token` | `string` | **Required**. token |
-
-#### Example
+#### Output
 
 ```
-   GET localhost:3000/crm/api/users/admin
+    [
+    {
+        "id": "66260080fdb7f14fc379856f",
+        "slug": "test-slug",
+        "title": "Computers Avon RAM",
+        "body": "Vel accusamus quaerat voluptatem vero. Ut et quia alias qui ut accusantium tempore consequuntur rerum. Eos quis sequi tenetur nulla ut soluta.",
+        "createdAt": "2024-04-22T06:15:27.463Z",
+        "authorId": "6625ffcd9225337d86663e71",
+        "Comment": [
+            {
+                "id": "662691a32be2cf9d17c3b168",
+                "comment": "Hat Trinidad Belize SCSI",
+                "createdAt": "2024-04-22T16:34:42.338Z",
+                "authorId": "6625ffcd9225337d86663e71",
+                "postId": "66260080fdb7f14fc379856f",
+                "author": {
+                    "id": "6625ffcd9225337d86663e71",
+                    "name": "Jefferey_Buckridge68",
+                    "email": "Osvaldo14@yahoo.com",
+                    "password": "$2b$08$bmrvWwsYUJI2Xtkgn.zCGuDTmtkn3lFxidEKtDx8jeg.fkwyt54Xq",
+                    "createdAt": "2024-04-22T06:12:16.802Z"
+                }
+            }
+        ]
+    },
+    {
+        "id": "662600cffdb7f14fc3798570",
+        "slug": "test-slug",
+        "title": "asymmetric exuding Organic",
+        "body": "Eligendi sequi qui velit quibusdam non tenetur molestiae beatae. Labore sed fugiat recusandae sed qui dolore consequatur beatae in. Qui quaerat esse eligendi aut. Ea aut labore voluptas aliquam dolor at quis recusandae quam. Dolorem et quidem ratione tempore non consequatur tenetur voluptas.",
+        "createdAt": "2024-04-22T06:16:47.563Z",
+        "authorId": "6625ffcd9225337d86663e71",
+        "Comment": [
+            {
+                "id": "662691ba2be2cf9d17c3b169",
+                "comment": "Table Legacy out-of-the-box Kansas",
+                "createdAt": "2024-04-22T16:35:06.467Z",
+                "authorId": "6625ffcd9225337d86663e71",
+                "postId": "662600cffdb7f14fc3798570",
+                "author": {
+                    "id": "6625ffcd9225337d86663e71",
+                    "name": "Jefferey_Buckridge68",
+                    "email": "Osvaldo14@yahoo.com",
+                    "password": "$2b$08$bmrvWwsYUJI2Xtkgn.zCGuDTmtkn3lFxidEKtDx8jeg.fkwyt54Xq",
+                    "createdAt": "2024-04-22T06:12:16.802Z"
+                }
+            }
+        ]
+    },
+    {
+        "id": "662603f60228b7b8a460ca4a",
+        "slug": "test-slug",
+        "title": "enterprise Handmade Street",
+        "body": "Porro totam nihil fugiat. Aut nemo dolore. Natus ut eius quibusdam quo velit commodi cum debitis non.",
+        "createdAt": "2024-04-22T06:30:14.603Z",
+        "authorId": "6625ffcd9225337d86663e71",
+        "Comment": [
+            {
+                "id": "662676d84156a99aa7dbb680",
+                "comment": "Bedfordshire Avon",
+                "createdAt": "2024-04-22T14:40:23.997Z",
+                "authorId": "6625ffcd9225337d86663e71",
+                "postId": "662603f60228b7b8a460ca4a",
+                "author": {
+                    "id": "6625ffcd9225337d86663e71",
+                    "name": "Jefferey_Buckridge68",
+                    "email": "Osvaldo14@yahoo.com",
+                    "password": "$2b$08$bmrvWwsYUJI2Xtkgn.zCGuDTmtkn3lFxidEKtDx8jeg.fkwyt54Xq",
+                    "createdAt": "2024-04-22T06:12:16.802Z"
+                }
+            },
+            {
+                "id": "6626928aef62454545aebae3",
+                "comment": "bypassing Factors RAM eyeballs interface",
+                "createdAt": "2024-04-22T16:38:34.548Z",
+                "authorId": "6625ffcd9225337d86663e71",
+                "postId": "662603f60228b7b8a460ca4a",
+                "author": {
+                    "id": "6625ffcd9225337d86663e71",
+                    "name": "Jefferey_Buckridge68",
+                    "email": "Osvaldo14@yahoo.com",
+                    "password": "$2b$08$bmrvWwsYUJI2Xtkgn.zCGuDTmtkn3lFxidEKtDx8jeg.fkwyt54Xq",
+                    "createdAt": "2024-04-22T06:12:16.802Z"
+                }
+            },
+            {
+                "id": "6628c111267cefb4e869e086",
+                "comment": "portals leading-edge reintermediate",
+                "createdAt": "2024-04-24T08:21:37.536Z",
+                "authorId": "6628ba809c19ffcd41ef477e",
+                "postId": "662603f60228b7b8a460ca4a",
+                "author": {
+                    "id": "6628ba809c19ffcd41ef477e",
+                    "name": "Reina_Dooley22",
+                    "email": "Eric71@gmail.com",
+                    "password": "$2b$08$GtfUjj0kDLvEUlXw/uoAY.eo4mzK8dI/qVWEib9qQhT9ShGbbE6y2",
+                    "createdAt": "2024-04-24T07:53:36.048Z"
+                }
+            }
+        ]
+    }
+]
+```
+
+#### Get Post By Post Id
+
+
+```http
+    PUT localhost:4000/api/post/:id
 ```
 
 #### Output
 
 ```
     {
-        "_id": "63a6e6cd4851254b90ea931c",
-        "name": "Litun",
-        "userId": "admin",
-        "password": "$2b$10$oYimYk0DBzDw/vy0Y28Rdu1fy0M4Z0pjaiyCgzcES9IBTuqW1PhX.",
-        "email": "nayaklitun9@gmail.com",
-        "userTypes": "ENGINEER",
-        "userStatus": "APPROVED",
-        "createdAt": "2022-12-24T11:47:25.784Z",
-        "updatedAt": "2022-12-24T11:47:25.784Z",
-        "__v": 0
-    }
+    "id": "662603f60228b7b8a460ca4a",
+    "slug": "test-slug",
+    "title": "enterprise Handmade Street",
+    "body": "Porro totam nihil fugiat. Aut nemo dolore. Natus ut eius quibusdam quo velit commodi cum debitis non.",
+    "createdAt": "2024-04-22T06:30:14.603Z",
+    "authorId": "6625ffcd9225337d86663e71",
+    "Comment": [
+        {
+            "id": "662676d84156a99aa7dbb680",
+            "comment": "Bedfordshire Avon",
+            "createdAt": "2024-04-22T14:40:23.997Z",
+            "authorId": "6625ffcd9225337d86663e71",
+            "postId": "662603f60228b7b8a460ca4a"
+        },
+        {
+            "id": "6626928aef62454545aebae3",
+            "comment": "bypassing Factors RAM eyeballs interface",
+            "createdAt": "2024-04-22T16:38:34.548Z",
+            "authorId": "6625ffcd9225337d86663e71",
+            "postId": "662603f60228b7b8a460ca4a"
+        },
+        {
+            "id": "6628c111267cefb4e869e086",
+            "comment": "portals leading-edge reintermediate",
+            "createdAt": "2024-04-24T08:21:37.536Z",
+            "authorId": "6628ba809c19ffcd41ef477e",
+            "postId": "662603f60228b7b8a460ca4a"
+        }
+    ]
+}
 ```
 
-#### Get user by userId and update userStatus
 
-**_NOTE:_** user should be ADMIN.
-
-```http
-    PUT localhost:3000/crm/api/users/:userId
-```
-
-| header           | Type     | Description         |
-| :--------------- | :------- | :------------------ |
-| `x-access-token` | `string` | **Required**. token |
-
-| path params | Type     | Description           |
-| :---------- | :------- | :-------------------- |
-| `userId`    | `string` | **Required**. user id |
-
-| body         | Type     | Description                     |
-| :----------- | :------- | :------------------------------ |
-| `userStatus` | `string` | **Required**. update userStatus |
+#### Dummy Data
 
 #### Example
 
 ```
-   PUT localhost:3000/crm/api/users/admin
+   PUT localhost:3000/api/post/:id
 ```
 
-```
-    {
-    "userStatus":"APPROVED"
-    }
 ```
 
 #### Output

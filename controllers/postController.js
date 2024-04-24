@@ -64,8 +64,9 @@ exports.deletePost = async (req, res, next) => {
 exports.getPosts = async (req, res, next) => {
   try {
     const result = await prisma.post.findMany();
-    res.json(result);
+    res.status(200).json(result);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message: "Something went wrong." });
   }
 };
