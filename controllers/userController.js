@@ -6,10 +6,11 @@ const cookieToken = require("../utlis/cookieToken");
 const bcrypt = require("bcrypt");
 
 // user signup
-
 exports.signup = async (req, res, next) => {
   try {
-    const { name, email, password } = req.body;
+    let { name, email, password } = req.body;
+
+    
     // Hash password
     const hashedPassword = bcrypt.hashSync(password, 8);
 
@@ -22,7 +23,8 @@ exports.signup = async (req, res, next) => {
       data: {
         name,
         email,
-        password:hashedPassword,
+        password: hashedPassword,
+        fromGoogle:false
       },
     });
 
@@ -34,7 +36,6 @@ exports.signup = async (req, res, next) => {
 };
 
 // Login User
-
 exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -64,6 +65,28 @@ exports.login = async (req, res, next) => {
     cookieToken(user, res);
   } catch (error) {
     throw new Error(error.message);
+  }
+};
+
+// Singup using Google
+exports.signupGoogle = async (req, res, next) => {
+  try {
+    const user = await prisma.user.findUnique({ email: req.body.email });
+
+    if (user) {
+      cookieToken(user, res);
+    } else {
+      const newUser = await prisma.user.create({
+        ...req.body,
+        fromGoogle: true,
+      });
+      cookieToken(newUser, res);
+    }
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong.",
+    });
   }
 };
 
