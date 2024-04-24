@@ -250,118 +250,61 @@ npm install
 }
 ```
 
-#### Dummy Data
 
-#### Example
-
-```
-   PUT localhost:3000/api/post/:id
-```
-
-```
-
-#### Output
-
-```
-
-    {
-        "message": "User record has been updated successfully."
-    }
-
-````
-
-#### Create ticket
+#### Create post
 
 ```http
-    POST localhost:3000/crm/api/ticket/
+    POST localhost:4000/api/post/create
 ````
-
-| header           | Type     | Description         |
-| :--------------- | :------- | :------------------ |
-| `x-access-token` | `string` | **Required**. token |
 
 | body             | Type     | Description                       |
 | :--------------- | :------- | :-------------------------------- |
 | `title`          | `string` | **Required**. title of the ticket |
-| `ticketPriority` | `string` | Priority of the ticket            |
-| `description`    | `string` | Description                       |
-| `status`         | `string` | Status open or closed             |
+| `slug` | `string` | the url for blog            |
+| `body`    | `string` | blog content                       |
 
 #### Example
 
 ```
     {
-        "title":"The first ticket",
-        "ticketPriority":2,
-        "description":"Random description for random ticket",
-        "status": "OPEN"
+    "title":"Internal primary indigo cross-platform RAM",
+    "slug":"test-slug",
+    "body":"Non optio eveniet nulla et. Ex itaque sed. Et perspiciatis qui id nam rem quas in saepe. Voluptatem qui qui ut sed blanditiis non ut."
     }
 ```
 
-#### Output
-
-```
-    {
-        "ticket": "The first ticket",
-        "ticketPriority": "2",
-        "description": "Random description for random ticket",
-        "status": "OPEN",
-        "reporter": "dibya123",
-        "assignee": "litun12345",
-        "id": "63b5babf0e3bf0ba61c233a7",
-        "createdAt": "2023-01-04T17:43:27.495Z",
-        "updatedAt": "2023-01-04T17:43:27.495Z"
-    }
-```
-
-#### Update ticket
+#### Update Post
 
 ```http
-    PUT localhost:3000/crm/api/ticket/:id
+    PUT localhost:4000/api/post/update/:id
 ```
 
-| header           | Type     | Description         |
-| :--------------- | :------- | :------------------ |
-| `x-access-token` | `string` | **Required**. token |
 
 | params | Type     | Description                                 |
 | :----- | :------- | :------------------------------------------ |
-| `id`   | `string` | **Required**.Id of the ticket to be updated |
+| `id`   | `string` | **Required**.Id of the blog to be updated |
 
 | body             | Type     | Description                          |
 | :--------------- | :------- | :----------------------------------- |
-| `title`          | `string` | title of the ticket to be updated    |
-| `ticketPriority` | `string` | Priority of the ticket to be updated |
-| `description`    | `string` | Description to be updated            |
-| `status`         | `string` | Status open or closed to be updated  |
+| `title`          | `string` | title of the blog to be updated    |
+| `body` | `string` | content of blog that needs to be updated |
 
 #### Example
 
 ```
-    PUT localhost:3000/crm/api/ticket/63b5babf0e3bf0ba61c233a7
+    PUT localhost:4000/api/post/update/662603f60228b7b8a460ca4a
 ```
 
 ```
     {
-        "status": "CLOSED"
+        "title": "Random title"
     }
 ```
 
-#### Output
+#### todo delete post, update post, get single Post, get all post,get all posts of a user
+#### todo create comment, get comments by post
 
-```
-    {
-        "ticket": "The first ticket",
-        "ticketPriority": "2",
-        "description": "Random description for random ticket",
-        "status": "CLOSED",
-        "reporter": "dibya123",
-        "assignee": "litun12345",
-        "id": "63b5babf0e3bf0ba61c233a7",
-        "createdAt": "2023-01-04T17:43:27.495Z",
-        "updatedAt": "2023-01-04T17:43:27.495Z"
-    }
-```
+ 
 
 #### Get ticket by Id
 
