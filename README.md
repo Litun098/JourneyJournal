@@ -68,7 +68,7 @@ npm install
 
 | body       | Type     | Description                 |
 | :--------- | :------- | :-------------------------- |
-| `userId`   | `string` | **Required**. unique userId |
+| `userId`   | `string` | **Required**. email         |
 | `password` | `string` | **Required**. password      |
 
 #### Example
