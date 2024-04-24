@@ -149,7 +149,6 @@ npm install
 
 #### Get Posts by author Id
 
-
 ```http
     GET localhost:4000/api/post/author/:id
 ```
@@ -205,64 +204,11 @@ npm install
                 }
             }
         ]
-    },
-    {
-        "id": "662603f60228b7b8a460ca4a",
-        "slug": "test-slug",
-        "title": "enterprise Handmade Street",
-        "body": "Porro totam nihil fugiat. Aut nemo dolore. Natus ut eius quibusdam quo velit commodi cum debitis non.",
-        "createdAt": "2024-04-22T06:30:14.603Z",
-        "authorId": "6625ffcd9225337d86663e71",
-        "Comment": [
-            {
-                "id": "662676d84156a99aa7dbb680",
-                "comment": "Bedfordshire Avon",
-                "createdAt": "2024-04-22T14:40:23.997Z",
-                "authorId": "6625ffcd9225337d86663e71",
-                "postId": "662603f60228b7b8a460ca4a",
-                "author": {
-                    "id": "6625ffcd9225337d86663e71",
-                    "name": "Jefferey_Buckridge68",
-                    "email": "Osvaldo14@yahoo.com",
-                    "password": "$2b$08$bmrvWwsYUJI2Xtkgn.zCGuDTmtkn3lFxidEKtDx8jeg.fkwyt54Xq",
-                    "createdAt": "2024-04-22T06:12:16.802Z"
-                }
-            },
-            {
-                "id": "6626928aef62454545aebae3",
-                "comment": "bypassing Factors RAM eyeballs interface",
-                "createdAt": "2024-04-22T16:38:34.548Z",
-                "authorId": "6625ffcd9225337d86663e71",
-                "postId": "662603f60228b7b8a460ca4a",
-                "author": {
-                    "id": "6625ffcd9225337d86663e71",
-                    "name": "Jefferey_Buckridge68",
-                    "email": "Osvaldo14@yahoo.com",
-                    "password": "$2b$08$bmrvWwsYUJI2Xtkgn.zCGuDTmtkn3lFxidEKtDx8jeg.fkwyt54Xq",
-                    "createdAt": "2024-04-22T06:12:16.802Z"
-                }
-            },
-            {
-                "id": "6628c111267cefb4e869e086",
-                "comment": "portals leading-edge reintermediate",
-                "createdAt": "2024-04-24T08:21:37.536Z",
-                "authorId": "6628ba809c19ffcd41ef477e",
-                "postId": "662603f60228b7b8a460ca4a",
-                "author": {
-                    "id": "6628ba809c19ffcd41ef477e",
-                    "name": "Reina_Dooley22",
-                    "email": "Eric71@gmail.com",
-                    "password": "$2b$08$GtfUjj0kDLvEUlXw/uoAY.eo4mzK8dI/qVWEib9qQhT9ShGbbE6y2",
-                    "createdAt": "2024-04-24T07:53:36.048Z"
-                }
-            }
-        ]
     }
 ]
 ```
 
 #### Get Post By Post Id
-
 
 ```http
     PUT localhost:4000/api/post/:id
@@ -304,7 +250,6 @@ npm install
 }
 ```
 
-
 #### Dummy Data
 
 #### Example
@@ -318,16 +263,18 @@ npm install
 #### Output
 
 ```
+
     {
         "message": "User record has been updated successfully."
     }
-```
+
+````
 
 #### Create ticket
 
 ```http
     POST localhost:3000/crm/api/ticket/
-```
+````
 
 | header           | Type     | Description         |
 | :--------------- | :------- | :------------------ |
