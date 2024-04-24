@@ -7,6 +7,6 @@ const {signup, login, logout, signupGoogle} = require('../controllers/userContro
 router.route('/signup').post(signup);
 router.route('/google').post(signupGoogle);
 router.route('/login').post(login);
-router.route('/logout').get(logout);
+router.route('/logout').post(logout);
 
 module.exports = router

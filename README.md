@@ -11,50 +11,52 @@ Welcome to JourneyJournal, a powerful and versatile blog application designed to
 - bcrypt
 - and many more...
 
-
 #### **Clone the repository:**
+
 ```
     git clone https://github.com/Litun098/JourneyJournal.git
 ```
+
 #### **Install dependencies:**
+
 cd journey-journal
 cd backend
 npm install
 
 #### **Set up environment variables:**
+
 - Create a `.env` file in the root directory.
 - Add environment variables such as database connection URI, JWT secret, etc.
 
-
 #### **Start the development server:**
-``` 
+
+```
     npm start
 ```
+
 #### TODO:
 
 ## API Endpoints
 
 #### Sign up User
 
-``` http
-    POST localhost:3000/crm/api/auth/signup
+```http
+    POST localhost:4000/api/signup
 ```
-| body      | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `name`    | `string` | **Required**. Name         |
-| `userId`  | `string` | **Required**. unique userId|
-| `email`   | `string` | **Required**. email        |
-| `userType`| `string` | **Required**. userType     |
-| `password`| `string` | **Required**. password     |
+
+| body       | Type     | Description            |
+| :--------- | :------- | :--------------------- |
+| `name`     | `string` | **Required**. Name     |
+| `email`    | `string` | **Required**. email    |
+| `password` | `string` | **Required**. password |
 
 #### Example
+
 ```
     {
-        "name":"user_name",
-        "userId":"admin",   
-        "email":"mail@gmail.com",
-        "userType":"ADMIN",
-        "password":"admin@admin",
+        "name":"{{$randomUserName}}",
+        "email":"{{$randomEmail}}",
+        "password":"password123"
     }
 ```
 
@@ -62,47 +64,56 @@ npm install
 
 #### Signin User
 
-``` http
-    POST localhost:3000/crm/api/auth/signin
+```http
+    POST localhost:4000/api/login
 ```
-| body       | Type     | Description                |
-| :--------  | :------- | :------------------------- |
-| `userId`   | `string` | **Required**. unique userId|
-| `password` | `string` | **Required**. password     |
+
+| body       | Type     | Description                 |
+| :--------- | :------- | :-------------------------- |
+| `userId`   | `string` | **Required**. unique userId |
+| `password` | `string` | **Required**. password      |
 
 #### Example
+
 ```
     {
-        "userId":"admin",   
-        "password":"admin@admin",
-    }
+    "email": "Osvaldo14@yahoo.com",
+    "password": "password123"
+}
 ```
+
 #### Output
 
 ```
     {
-        "name": "user_name",
-        "userId": "admin",
-        "email": "mail@gmail.com",
-        "userTypess": "ENGINEER",
-        "userStatus": "APPROVED",
-        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-                        .eyJ1c2VySWQiOiJhZG1pbiIsImlhdCI6MTY3MTg4MjUzNCwiZXhwIjoxNjcxOTY4OTM0fQ
-                        .EVfZybdHFCQQN8NaIyCMK-G8UcES2Ry2gRr5MwhEkyI"
+    "success": true,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjI4YmE4MDljMTlmZmNkNDFlZjQ3N2UiLCJpYXQiOjE3MTM5NDY2NTksImV4cCI6MTcxNDAzMzA1OX0.jcChb21XHV-58L0SJcKjpGX9v1Qn0xgTOlQaSgzwrAE",
+    "user": {
+        "id": "6628ba809c19ffcd41ef477e",
+        "name": "Reina_Dooley22",
+        "email": "Eric71@gmail.com",
+        "fromGoogle": false,
+        "createdAt": "2024-04-24T07:53:36.048Z"
     }
+}
 ```
+#### Logout
 
+```http
+     localhost:4000/api/logout
+```
 
 #### Get all users
 
-**_NOTE:_**  user should be ADMIN.
+**_NOTE:_** user should be ADMIN.
 
-``` http
+```http
     POST localhost:3000/crm/api/users
 ```
-| header            | Type     | Description                |
-| :-----------------| :------- | :------------------------- |
-| `x-access-token`  | `string` | **Required**. token        |
+
+| header           | Type     | Description         |
+| :--------------- | :------- | :------------------ |
+| `x-access-token` | `string` | **Required**. token |
 
 #### Output
 
@@ -134,17 +145,18 @@ npm install
 
 #### Get user by userId
 
+**_NOTE:_** user should be ADMIN.
 
-**_NOTE:_**  user should be ADMIN.
-
-``` http
+```http
     POST localhost:3000/crm/api/users/:userId
 ```
-| header            | Type     | Description                |
-| :-----------------| :------- | :------------------------- |
-| `x-access-token`  | `string` | **Required**. token        |
 
-#### Example 
+| header           | Type     | Description         |
+| :--------------- | :------- | :------------------ |
+| `x-access-token` | `string` | **Required**. token |
+
+#### Example
+
 ```
    GET localhost:3000/crm/api/users/admin
 ```
@@ -168,25 +180,26 @@ npm install
 
 #### Get user by userId and update userStatus
 
+**_NOTE:_** user should be ADMIN.
 
-**_NOTE:_**  user should be ADMIN.
-
-``` http
+```http
     PUT localhost:3000/crm/api/users/:userId
 ```
-| header            | Type     | Description                |
-| :-----------------| :------- | :------------------------- |
-| `x-access-token`  | `string` | **Required**. token        |
 
-| path params            | Type     | Description                |
-| :-----------------| :------- | :------------------------- |
-| `userId`  | `string` | **Required**. user id        |
+| header           | Type     | Description         |
+| :--------------- | :------- | :------------------ |
+| `x-access-token` | `string` | **Required**. token |
 
-| body           | Type     | Description                    |
-| :------------  | :------- | :-------------------------     |
-| `userStatus`   | `string` | **Required**. update userStatus|
+| path params | Type     | Description           |
+| :---------- | :------- | :-------------------- |
+| `userId`    | `string` | **Required**. user id |
 
-#### Example 
+| body         | Type     | Description                     |
+| :----------- | :------- | :------------------------------ |
+| `userStatus` | `string` | **Required**. update userStatus |
+
+#### Example
+
 ```
    PUT localhost:3000/crm/api/users/admin
 ```
@@ -207,20 +220,20 @@ npm install
 
 #### Create ticket
 
-``` http
+```http
     POST localhost:3000/crm/api/ticket/
 ```
-| header            | Type     | Description                |
-| :-----------------| :------- | :------------------------- |
-| `x-access-token`  | `string` | **Required**. token        |
 
+| header           | Type     | Description         |
+| :--------------- | :------- | :------------------ |
+| `x-access-token` | `string` | **Required**. token |
 
-| body              | Type     | Description                        |
-| :-----------------| :------- | :----------------------------------|
-| `title`           | `string` | **Required**. title of the ticket  |
-| `ticketPriority`  | `string` |  Priority of the ticket            |
-| `description`     | `string` |  Description                       |
-| `status`          | `string` | Status open or closed              |
+| body             | Type     | Description                       |
+| :--------------- | :------- | :-------------------------------- |
+| `title`          | `string` | **Required**. title of the ticket |
+| `ticketPriority` | `string` | Priority of the ticket            |
+| `description`    | `string` | Description                       |
+| `status`         | `string` | Status open or closed             |
 
 #### Example
 
@@ -251,29 +264,28 @@ npm install
 
 #### Update ticket
 
-``` http
+```http
     PUT localhost:3000/crm/api/ticket/:id
 ```
-| header            | Type     | Description                |
-| :-----------------| :------- | :------------------------- |
-| `x-access-token`  | `string` | **Required**. token        |
 
-| params            | Type     | Description                                |
-| :-----------------| :------- | :------------------------------------------|
-| `id`              | `string` | **Required**.Id of the ticket to be updated|
+| header           | Type     | Description         |
+| :--------------- | :------- | :------------------ |
+| `x-access-token` | `string` | **Required**. token |
 
+| params | Type     | Description                                 |
+| :----- | :------- | :------------------------------------------ |
+| `id`   | `string` | **Required**.Id of the ticket to be updated |
 
-| body              | Type     | Description                                |
-| :-----------------| :------- | :------------------------------------------|
-| `title`           | `string` |  title of the ticket to be updated         |
-| `ticketPriority`  | `string` |  Priority of the ticket to be updated      |
-| `description`     | `string` |  Description to be updated                 |
-| `status`          | `string` |  Status open or closed to be updated       |
-
+| body             | Type     | Description                          |
+| :--------------- | :------- | :----------------------------------- |
+| `title`          | `string` | title of the ticket to be updated    |
+| `ticketPriority` | `string` | Priority of the ticket to be updated |
+| `description`    | `string` | Description to be updated            |
+| `status`         | `string` | Status open or closed to be updated  |
 
 #### Example
 
-``` 
+```
     PUT localhost:3000/crm/api/ticket/63b5babf0e3bf0ba61c233a7
 ```
 
@@ -301,16 +313,17 @@ npm install
 
 #### Get ticket by Id
 
-``` http
+```http
     PUT localhost:3000/crm/api/ticket/:id
 ```
-| header            | Type     | Description                |
-| :-----------------| :------- | :------------------------- |
-| `x-access-token`  | `string` | **Required**. token        |
 
-| Query params      | Type     | Description                                |
-| :-----------------| :------- | :------------------------------------------|
-| `id`              | `string` | **Required**.Id of the ticket              |
+| header           | Type     | Description         |
+| :--------------- | :------- | :------------------ |
+| `x-access-token` | `string` | **Required**. token |
+
+| Query params | Type     | Description                   |
+| :----------- | :------- | :---------------------------- |
+| `id`         | `string` | **Required**.Id of the ticket |
 
 #### Output
 
@@ -329,16 +342,6 @@ npm install
         }
     ]
 ```
-
-
-
-
-
-
-
-
-
-
 
 ## Contributors
 
