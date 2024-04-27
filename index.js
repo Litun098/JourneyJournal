@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended:true}));
 // Cookie middleware
 app.use(cookeieParser());
 
-
+ 
 app.use("/api",UserRouter);
 app.use("/api",postRouter);
 app.use("/api",commentRouter);

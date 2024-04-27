@@ -19,7 +19,7 @@ const isLoggedIn = async (req, res, next) => {
       },
     });
     req.userId = req.user.id
-    next();
+    next(); 
   } catch (error) {
     throw new Error(error);
   }

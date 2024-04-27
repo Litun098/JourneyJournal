@@ -279,7 +279,6 @@ npm install
     PUT localhost:4000/api/post/update/:id
 ```
 
-
 | params | Type     | Description                                 |
 | :----- | :------- | :------------------------------------------ |
 | `id`   | `string` | **Required**.Id of the blog to be updated |
@@ -301,42 +300,30 @@ npm install
     }
 ```
 
-#### todo delete post, update post, get single Post, get all post,get all posts of a user
-#### todo create comment, get comments by post
-
- 
-
-#### Get ticket by Id
+#### get single Post
 
 ```http
-    PUT localhost:3000/crm/api/ticket/:id
+    GET localhost:4000/api/post/update/:id
 ```
 
-| header           | Type     | Description         |
-| :--------------- | :------- | :------------------ |
-| `x-access-token` | `string` | **Required**. token |
+| params | Type     | Description                                 |
+| :----- | :------- | :------------------------------------------ |
+| `id`   | `string` | **Required**.Id of the Blog post |
 
-| Query params | Type     | Description                   |
-| :----------- | :------- | :---------------------------- |
-| `id`         | `string` | **Required**.Id of the ticket |
 
-#### Output
 
+#### Add comment
+
+```http
+    POST localhost:4000/api/comment/:id
 ```
-    [
-        {
-            "ticket": "The first ticket updated",
-            "ticketPriority": "2",
-            "description": "Random description for random ticket",
-            "status": "CLOSED",
-            "reporter": "dibya123",
-            "assignee": "litun12345",
-            "id": "63b5babf0e3bf0ba61c233a7",
-            "createdAt": "2023-01-04T17:43:27.495Z",
-            "updatedAt": "2023-01-04T17:43:27.495Z"
-        }
-    ]
-```
+
+| body             | Type     | Description                       |
+| :--------------- | :------- | :-------------------------------- |
+| `comment`          | `string` | **Required**. Comment |
+
+
+
 
 ## Contributors
 
